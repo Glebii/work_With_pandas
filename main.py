@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 import matplotlib
 import time
@@ -54,13 +53,43 @@ def exercise_g(data):
     print(
         f'The default statistics:\nMaximum temperature value - {max_temperature}\nMinimum temperature value - {min_temperature}'
         f'\nAverage temperature value - {round(average_temperature, 2)}\nMedian temperatures - {median_temperature}')
+    exercise_h_i_j(data)
 
-    exercise_h(data)
 
+def exercise_h_i_j(data):
+    data.drop(['relation to the previous value'], axis=1, inplace=True)
+    qty_of_plots = 3
+    qty_of_plots_in_column = 1
 
-def exercise_h(data):
-    # data.plot()
-    pass
+    # plot1 (All):
+    x = data.index
+    y = data['temperature']
+    plt.subplot(qty_of_plots, qty_of_plots_in_column, 1)
+    plt.plot(x, y)
+    plt.title("Temperature chart for all time")
+    plt.xlabel("Datetime")
+    plt.ylabel("Temperature")
+
+    # plot2 (Temperature for 1 month)
+    y = data.loc['2016-04-01 00:00:00':'2016-04-30 23:00:00']
+    print(y)
+    plt.subplot(qty_of_plots, qty_of_plots_in_column, 2)
+    plt.plot(y, color='gold')
+    plt.title("Temperature chart for April")
+    plt.xlabel("Datetime")
+    plt.ylabel("Temperature")
+
+    # plot3 (Temperature for June 2017 higher than 25)
+    june_2017 = data.loc['2017-06-01 00:00:00':'2017-06-30 23:00:00']
+    y = june_2017[june_2017['temperature'] > 25]
+    plt.subplot(qty_of_plots, qty_of_plots_in_column, 3)
+    plt.plot(y, color='orange')
+    plt.title("Temperature chart for June 2017")
+    plt.xlabel("Datetime")
+    plt.ylabel("Temperature")
+
+    plt.subplots_adjust(wspace=1, hspace=1)
+    plt.show()
 
 
 if __name__ == '__main__':
