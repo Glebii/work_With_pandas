@@ -73,7 +73,7 @@ def exercise_h_i_j(data):
     # plot2 (Temperature for 1 month)
     y = data.loc['2016-04-01 00:00:00':'2016-04-30 23:00:00']
     plt.subplot(qty_of_plots, qty_of_plots_in_column, 2)
-    plt.plot(y, color='gold')
+    plt.scatter(y.index, y , s=7 , c="green")
     plt.title("Temperature chart for April")
     plt.xlabel("Datetime")
     plt.ylabel("Temperature")
@@ -82,7 +82,7 @@ def exercise_h_i_j(data):
     june_2017 = data.loc['2017-06-01 00:00:00':'2017-06-30 23:00:00']
     y = june_2017[june_2017['temperature'] > 25]
     plt.subplot(qty_of_plots, qty_of_plots_in_column, 3)
-    plt.plot(y, color='orange')
+    plt.scatter(y.index, y, s=10, c="orange")
     plt.title("Temperature chart for June 2017")
     plt.xlabel("Datetime")
     plt.ylabel("Temperature")
