@@ -72,7 +72,6 @@ def exercise_h_i_j(data):
 
     # plot2 (Temperature for 1 month)
     y = data.loc['2016-04-01 00:00:00':'2016-04-30 23:00:00']
-    print(y)
     plt.subplot(qty_of_plots, qty_of_plots_in_column, 2)
     plt.plot(y, color='gold')
     plt.title("Temperature chart for April")
